@@ -62,6 +62,11 @@ class Medecins
      */
     private $mesRendezVous;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $orderNumber;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -176,6 +181,18 @@ class Medecins
         if ($mesRendezVous->getDocteur() !== $this) {
             $mesRendezVous->setDocteur($this);
         }
+
+        return $this;
+    }
+
+    public function getOrderNumber(): ?string
+    {
+        return $this->orderNumber;
+    }
+
+    public function setOrderNumber(string $orderNumber): self
+    {
+        $this->orderNumber = $orderNumber;
 
         return $this;
     }

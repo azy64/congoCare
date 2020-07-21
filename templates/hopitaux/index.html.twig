@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hopitaux index{% endblock %}
+
+{% block body %}
+    <h1>Hopitaux index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Adress</th>
+                <th>Localisation</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for hopitaux in hopitauxes %}
+            <tr>
+                <td>{{ hopitaux.id }}</td>
+                <td>{{ hopitaux.nom }}</td>
+                <td>{{ hopitaux.adress }}</td>
+                <td>{{ hopitaux.localisation }}</td>
+                <td>
+                    <a href="{{ path('hopitaux_show', {'id': hopitaux.id}) }}">show</a>
+                    <a href="{{ path('hopitaux_edit', {'id': hopitaux.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('hopitaux_new') }}">Create new</a>
+{% endblock %}
